@@ -1,8 +1,5 @@
 package com.infoworks.lab.app.layouts;
 
-import com.infoworks.lab.app.components.ui.LiveLocation;
-import com.infoworks.lab.app.components.ui.OrderList;
-import com.infoworks.lab.app.components.ui.Payment;
 import com.infoworks.lab.app.components.component.SideBarButton;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -13,9 +10,10 @@ import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.router.RouterLayout;
 
-
+@Push
 @StyleSheet("styles/dash_style.css")
 public class AppLayout extends Div implements RouterLayout {
 
@@ -32,7 +30,7 @@ public class AppLayout extends Div implements RouterLayout {
     Button addYourStoreLocationButton = new Button("Add your Store Location");
     Button createOrderButton = new Button("Create Order");
     Button overViewButton = new Button();
-    SideBarButton orderListButton = new SideBarButton("OrderList" );
+    SideBarButton passengerListButton = new SideBarButton("Passenger List" );
     SideBarButton liveLocation = new SideBarButton("Live location" );
     SideBarButton paymentButton = new SideBarButton("Payment");
     SideBarButton settingsButton = new SideBarButton("Settings");
@@ -116,7 +114,7 @@ public class AppLayout extends Div implements RouterLayout {
         navBottom.addClassName("nav-bottom");
         overViewButton.addClassName("button");
         overViewButton.setText("OverView");
-        nav.add(overViewButton, orderListButton, liveLocation, paymentButton, settingsButton);
+        nav.add(overViewButton, passengerListButton, liveLocation, paymentButton, settingsButton);
         navBottom.add(logoutButton);
         sideBar.add(nav, navBottom);
 
@@ -126,19 +124,19 @@ public class AppLayout extends Div implements RouterLayout {
         paymentButton.addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
             @Override
             public void onComponentEvent(ClickEvent<Button> buttonClickEvent) {
-                UI.getCurrent().navigate(Payment.ROUTE_NAME);
+                UI.getCurrent().navigate(RoutePath.PAYMENT_VIEW);
             }
         });
-        orderListButton.addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
+        passengerListButton.addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
             @Override
             public void onComponentEvent(ClickEvent<Button> buttonClickEvent) {
-                UI.getCurrent().navigate(OrderList.ROUTE_NAME);
+                UI.getCurrent().navigate(RoutePath.PASSENGERS_CRUD_VIEW);
             }
         });
         liveLocation.addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
             @Override
             public void onComponentEvent(ClickEvent<Button> buttonClickEvent) {
-                UI.getCurrent().navigate(LiveLocation.ROUTE_NAME);
+                UI.getCurrent().navigate(RoutePath.LIVE_VIEW);
             }
         });
 

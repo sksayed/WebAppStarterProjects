@@ -100,7 +100,7 @@
         <dependency>
             <groupId>com.infoworks.lab</groupId>
             <artifactId>http-rest-client</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>v1.2-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.infoworks.lab</groupId>
